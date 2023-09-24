@@ -1,30 +1,69 @@
-import Price from "@/components/Price";
-import { singleProduct } from "@/data";
-import Image from "next/image";
-import React from "react";
+"use client";
 
-const SingleProductPage = () => {
+import React, { useEffect, useState } from "react";
+
+type Props = {
+  price: number;
+  id: number;
+  options?: { title: string; additionalPrice: number }[];
+};
+
+const Price = ({ price, id, options }: Props) => {
+  const [total, setTotal] = useState(price);
+  const [quantity, setQuantity] = useState(1);
+  const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+    setTotal(
+      quantity * (options ? price + options[selected].additionalPrice : price)
+    );
+  }, [quantity, selected, options, price]);
+
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-screen flex flex-col justify-around text-orange-500 md:flex-row md:gap-8 md:items-center">
-      {/* IMAGE CONTAINER */}
-      {singleProduct.img && (
-        <div className="relative w-full h-1/2 md:h-[70%]">
-          <Image
-            src={singleProduct.img}
-            alt=""
-            className="object-contain"
-            fill
-          />
+    <div className="flex flex-col gap-4">
+      <h2 className="text-2xl font-bold">${total.toFixed(2)}</h2>
+      {/* OPTIONS CONTAINER */}
+      <div className="flex gap-4">
+        {options?.map((option, index) => (
+          <button
+            key={option.title}
+            className="min-w-[6rem] p-2 ring-1 ring-red-400 rounded-md"
+            style={{
+              background: selected === index ? "rgb(248 113 113)" : "white",
+              color: selected === index ? "white" : "red",
+            }}
+            onClick={() => setSelected(index)}
+          >
+            {option.title}
+          </button>
+        ))}
+      </div>
+      {/* QUANTITY AND ADD BUTTON CONTAINER */}
+      <div className="flex justify-between items-center">
+        {/* QUANTITY */}
+        <div className="flex justify-between w-full p-3 ring-1 ring-red-500">
+          <span>Quantity</span>
+          <div className="flex gap-4 items-center">
+            <button
+              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+            >
+              {"<"}
+            </button>
+            <span>{quantity}</span>
+            <button
+              onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
+            >
+              {">"}
+            </button>
+          </div>
         </div>
-      )}
-      {/* TEXT CONTAINER */}
-      <div className="h-1/2 flex flex-col gap-4 md:h-[70%] md:justify-center md:gap-6 xl:gap-8">
-        <h1 className="text-3xl font-bold uppercase xl:text-5xl">{singleProduct.title}</h1>
-        <p>{singleProduct.desc}</p>
-        <Price price={singleProduct.price} id={singleProduct.id} options={singleProduct.options}/>
+        {/* CART BUTTON */}
+        <button className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500">
+          Add to Cart
+        </button>
       </div>
     </div>
   );
 };
 
-export default SingleProductPage;
+export default Price;

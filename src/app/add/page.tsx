@@ -101,9 +101,9 @@ const AddPage = () => {
   };
 
   return (
-    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center text-red-500">
-      <form onSubmit={handleSubmit} className="flex flex-wrap gap-6">
-        <h1 className="text-4xl mb-2 text-gray-300 font-bold">
+    <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center text-orange-300">
+      <form onSubmit={handleSubmit} className="flex flex-wrap gap-2">
+        <h1 className="text-3xl mb-2 text-red-300 font-bold">
           Add New Product
         </h1>
         <div className="w-full flex flex-col gap-2 ">
@@ -179,7 +179,7 @@ const AddPage = () => {
               onChange={changeOption}
             />
             <button
-              className="bg-gray-500 p-2 text-white"
+              className="bg-red-300 p-2 text-white"
               onClick={() => setOptions((prev) => [...prev, option])}
             >
               Add Option
@@ -204,7 +204,7 @@ const AddPage = () => {
         </div>
         <button
           type="submit"
-          className="bg-red-500 p-4 text-white w-48 rounded-md relative h-14 flex items-center justify-center"
+          className="bg-red-300 p-4 text-white w-48 rounded-md relative h-14 flex items-center justify-center"
         >
           Submit
         </button>

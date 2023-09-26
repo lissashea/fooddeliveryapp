@@ -79,7 +79,7 @@ const CartPage = () => {
         </div>
         <hr className="my-2" />
         <div className="flex justify-between">
-          <span className="">TOTAL(INCL. VAT)</span>
+          <span className="">TOTAL(INCL. TAX)</span>
           <span className="font-bold">${totalPrice}</span>
         </div>
         <button

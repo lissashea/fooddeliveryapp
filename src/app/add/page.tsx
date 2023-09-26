@@ -66,9 +66,9 @@ const AddPage = () => {
   const upload = async () => {
     const data = new FormData();
     data.append("file", file!);
-    data.append("upload_preset", "restaurant");
+    data.append("upload_preset", "dropwich");
 
-    const res = await fetch("https://api.cloudinary.com/v1_1/lamadev/image", {
+    const res = await fetch("https://api.cloudinary.com/v1_1/di1qn5nm7/image", {
       method: "POST",
       headers: { "Content-Type": "multipart/form-data" },
       body: data,

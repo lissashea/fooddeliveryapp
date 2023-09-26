@@ -1,8 +1,9 @@
-import React from 'react';
-import Menu from './Menu';
+import React from "react";
+import Menu from "./Menu";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import Image from "next/image";
+import UserLinks from "./UserLinks";
 
 const Navbar = () => {
   const user = false;
@@ -12,10 +13,10 @@ const Navbar = () => {
         <Link href="/">Homepage</Link>
         <Link href="/menu">Menu</Link>
         <Link href="/">Contact</Link>
-        </div> 
+      </div>
       {/* LOGO */}
       <div className="text-xl md:font-bold flex-1 md:text-center">
-        <Link href="/" >Dropwhich</Link>
+        <Link href="/">Dropwhich</Link>
       </div>
       {/* MOBILE MENU */}
       <div className="md:hidden">
@@ -32,6 +33,7 @@ const Navbar = () => {
         ) : (
           <Link href="/orders">Orders</Link>
         )}
+        <UserLinks />
         <CartIcon />
       </div>
     </div>

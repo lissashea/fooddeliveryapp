@@ -31,7 +31,7 @@ const CartIcon = () => {
         </div>
         {session?.user.isAdmin ? (
           <button className="
-          h-12 text-orange-500 p-4 flex items-center justify-between  uppercase">Add product</button>
+          h-12 text-orange-500 p-4 flex items-center justify-between border-b-2 border-b-red-300 uppercase">Add product</button>
         ) : (
           <span>Cart ({totalItems})</span>
         )}

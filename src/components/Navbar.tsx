@@ -27,8 +27,8 @@ const Navbar = () => {
         <div className="md:absolute top-3 r-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-3 rounded-md">
           <Image src="/phone.png" alt="" width={20} height={20} />
           <span className="md:whitespace-nowrap">914 400 3093</span>
-        </div>
-        <UserLinks />
+          </div>
+        <UserLinks/>
         <CartIcon />
       </div>
     </div>

@@ -12,9 +12,9 @@ const Price = ({ product }: { product: ProductType }) => {
 
   const { addToCart } = useCartStore();
 
-  useEffect(()=>{
-    useCartStore.persist.rehydrate()
-  },[])
+  useEffect(() => {
+    useCartStore.persist.rehydrate();
+  }, []);
 
   useEffect(() => {
     if (product.options?.length) {
@@ -24,7 +24,7 @@ const Price = ({ product }: { product: ProductType }) => {
     }
   }, [quantity, selected, product]);
 
-  const handleCart = ()=>{
+  const handleCart = () => {
     addToCart({
       id: product.id,
       title: product.title,
@@ -34,9 +34,9 @@ const Price = ({ product }: { product: ProductType }) => {
         optionTitle: product.options[selected].title,
       }),
       quantity: quantity,
-    })
-    toast.success("The product added to the cart!")
-  }
+    });
+    toast.success("The product added to the cart!");
+  };
 
   return (
     <div className="flex flex-col gap-4">

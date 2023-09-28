@@ -73,7 +73,7 @@ const OrdersPage = () => {
               </td>
               <td className="py-6 px-1">{item.price}</td>
               <td className="hidden md:block py-6 px-1">
-                {item.products[0].title}
+              {item.products.length > 0 ? item.products[0].title : 'N/A'}
               </td>
               {session?.user.isAdmin ? (
                 <td>

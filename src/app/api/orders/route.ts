@@ -2,6 +2,8 @@ import { getAuthSession } from "@/utils/auth";
 import { prisma } from "@/utils/connect";
 import { NextRequest, NextResponse } from "next/server";
 
+
+
 // FETCH ALL ORDERS
 export const GET = async (req: NextRequest) => {
   const session = await getAuthSession();

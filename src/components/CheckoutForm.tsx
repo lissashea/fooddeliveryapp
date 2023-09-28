@@ -80,7 +80,7 @@ const CheckoutForm = () => {
 
     setIsLoading(false);
   };
-
+  
   return (
     <form
       id="payment-form"

@@ -1,9 +1,14 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
+// Define the database URL for development and production environments
+const devDatabaseUrl = 'postgresql://myuser:password@localhost:5432/mydb?schema=public';
+const prodDatabaseUrl = process.env.DATABASE_URL || 'default-production-url';
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Create a Prisma client instance
+export const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.NODE_ENV === 'production' ? prodDatabaseUrl : devDatabaseUrl,
+    },
+  },
+});

@@ -14,7 +14,7 @@ const LoginPage = () => {
     if (status === "authenticated") {
       router.push("/");
     }
-  }, [status]);
+  }, [status, router]);
 
   if (status === "loading") {
     return <p>Loading...</p>;

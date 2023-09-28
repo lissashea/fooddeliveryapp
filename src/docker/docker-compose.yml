@@ -1,5 +1,6 @@
-services:
+version: '3.8' # Adjust the version as needed
 
+services:
   db:
     image: postgres
     restart: always
@@ -8,4 +9,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
     ports:
-    - 5432:5432
+      - 5432:5432
+
+volumes:
+  pg_data:

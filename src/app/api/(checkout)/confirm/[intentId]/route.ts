@@ -1,38 +1,27 @@
 import { prisma } from "@/utils/connect";
-import { NextResponse } from "next/server";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const intentId = Array.isArray(req.query.intentId)
-    ? req.query.intentId[0] // If intentId is an array, take the first element
-    : req.query.intentId; // Otherwise, use intentId as is
-
   if (req.method === "PUT") {
+    const { intentId } = req.query;
+
     try {
       await prisma.order.update({
         where: {
-          intent_id: intentId,
+          intent_id: intentId as string, // Ensure intentId is treated as a string
         },
         data: { status: "Being prepared!" },
       });
-      return new NextResponse(
-        JSON.stringify({ message: "Order has been updated" }),
-        { status: 200 }
-      );
+
+      res.status(200).json({ message: "Order has been updated" });
     } catch (err) {
-      console.log(err);
-      return new NextResponse(
-        JSON.stringify({ message: "Something went wrong!" }),
-        { status: 500 }
-      );
+      console.error(err);
+      res.status(500).json({ message: "Something went wrong!" });
     }
   } else {
-    return new NextResponse(
-      JSON.stringify({ message: "Invalid HTTP method" }),
-      { status: 405 } // Method Not Allowed
-    );
+    res.status(405).json({ message: "Invalid HTTP method" });
   }
 }

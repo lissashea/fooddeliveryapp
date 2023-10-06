@@ -12,7 +12,8 @@ const getData = async (category: string) => {
   );
 
   if (!res.ok) {
-    throw new Error("Failed!");
+    // throw new Error("Failed!");
+    return []
   }
 
   return res.json();
@@ -33,9 +34,9 @@ const CategoryPage = async ({ params }: Props) => {
           key={item.id}
         >
           {/* IMAGE CONTAINER */}
-          {item.img && (
+          {item?.img && (
             <div className="relative h-[80%]">
-              <Image src={item.img} alt="" fill className="object-contain" />
+              <Image src={item?.img || ''} alt="" fill className="object-contain" />
             </div>
           )}
           {/* TEXT CONTAINER */}

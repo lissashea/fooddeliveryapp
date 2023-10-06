@@ -3,19 +3,14 @@ import Image from "next/image";
 import React from "react";
 
 const getData = async ()=>{
-  const res = await fetch("http://localhost:3000/api/products",{
-    cache:"no-store"
-  })  
+  const res = await fetch("http://localhost:3000/api/products") 
 
-  // const errorData = await res.json(); // Await the error response JSON
-  //   console.log("errorData: ", errorData);
-
-  if (!res.ok) {
-    const errorData = await res.json(); // Await the error response JSON    
+  if (!res?.ok) {
+    // const errorData = await res.json(); // Await the error response JSON    
     // throw new Error(errorData.status); // Throw an error with the error message
     return []
   }
-  return await res.json()
+  return await res?.json()
 }
 
 const Featured = async () => {
@@ -29,13 +24,13 @@ const Featured = async () => {
         {/* SINGLE ITEM */}
         {featuredProducts.map((item) => (
           <div
-            key={item.id}
+            key={item?.id}
             className="w-screen h-[60vh] flex flex-col items-center justify-around p-4 hover:bg-fuchsia-50 transition-all duration-300 md:w-[50vw] xl:w-[33vw] xl:h-[90vh]"
           >
             {/* IMAGE CONTAINER */}
-            {item.img && (
+            {item?.img && (
               <div className="relative flex-1 w-full hover:rotate-[60deg] transition-all duration-500">
-                <Image src={item.img} alt="" fill className="object-contain" />
+                <Image src={item?.img || ''} alt="" fill className="object-contain" />
               </div>
             )}
             {/* TEXT CONTAINER */}
@@ -52,6 +47,8 @@ const Featured = async () => {
       </div>
     </div>
   );
+
+  return (<>hello</>)
 };
 
 export default Featured;

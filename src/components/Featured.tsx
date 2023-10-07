@@ -2,6 +2,7 @@ import { ProductType } from "@/types/types";
 import Image from "next/image";
 import { prisma } from "@/utils/connect";
 import React from "react";
+import { log } from "console";
 
 // const getData = async ()=>{
 //   const res = await fetch("http://localhost:3000/api/products", {
@@ -20,7 +21,9 @@ const getData = async () => {
   const products = await prisma.product.findMany({
     where: { isFeatured: true },
   }).catch(err => err);
-
+  
+  console.log(products);
+  
   return products || []
 }
 

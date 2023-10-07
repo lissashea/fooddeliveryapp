@@ -12,17 +12,18 @@ import { NextResponse } from "next/server";
 
 // FETCH ALL CATEGORIES
 export const GET = async () => {
-  try {
-    const categories = await prisma.category.findMany();
-    if(categories){
-      return new NextResponse(JSON.stringify(categories), { status: 200 });
-    }
-      return new NextResponse(JSON.stringify([]), { status: 400 });
-  } catch (err) {
-    console.log(err);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }),
-      { status: 500 }
-    );
-  }
+  return new NextResponse(JSON.stringify([]), { status: 200 });
+  // try {
+  //   const categories = await prisma.category.findMany().catch(err => err);
+  //   if(categories){
+  //     return new NextResponse(JSON.stringify(categories), { status: 200 });
+  //   }
+  //     return new NextResponse(JSON.stringify([]), { status: 400 });
+  // } catch (err) {
+  //   console.log(err);
+  //   return new NextResponse(
+  //     JSON.stringify({ message: "Something went wrong!" }),
+  //     { status: 500 }
+  //   );
+  // }
 };

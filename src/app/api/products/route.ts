@@ -11,7 +11,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       where: {
         ...(cat ? { catSlug: cat } : { isFeatured: true }),
       },
-    });
+    }).catch(err => err);
     
     return new NextResponse(JSON.stringify(products), { status: 200 });
   } catch (err) {

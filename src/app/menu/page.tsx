@@ -24,7 +24,7 @@ const getData = async () => {
 // };
 
 const MenuPage = async () => {
-  const menu: MenuType = await getData();
+  // const menu: MenuType = await getData();
   // console.log("menu: ");
   // console.log(menu);
   

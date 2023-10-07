@@ -1,18 +1,27 @@
 import { ProductType } from "@/types/types";
 import Image from "next/image";
+import { prisma } from "@/utils/connect";
 import React from "react";
 
-const getData = async ()=>{
-  const res = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store"
-  }) 
+// const getData = async ()=>{
+//   const res = await fetch("http://localhost:3000/api/products", {
+//     cache: "no-store"
+//   }) 
 
-  if (!res?.ok) {
-    // const errorData = await res.json(); // Await the error response JSON    
-    // throw new Error(errorData.status); // Throw an error with the error message
-    return []
-  }
-  return await res?.json()
+//   if (!res?.ok) {
+//     // const errorData = await res.json(); // Await the error response JSON    
+//     // throw new Error(errorData.status); // Throw an error with the error message
+//     return []
+//   }
+//   return await res?.json()
+// }
+
+const getData = async () => {
+  const products = await prisma.product.findMany({
+    where: { isFeatured: true },
+  }).catch(err => err);
+  
+  return products || []
 }
 
 const Featured = async () => {

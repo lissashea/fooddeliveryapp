@@ -3,21 +3,21 @@ import { prisma } from "@/utils/connect";
 import Link from "next/link";
 import React from "react";
 
-const getData = async () => {
+// const getData = async () => {
   
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store"
-  });
-  const r = await res?.json()
-  console.log(r);
+//   const res = await fetch("http://localhost:3000/api/categories", {
+//     cache: "no-store"
+//   });
+//   const r = await res?.json()
+//   console.log(r);
   
-  if (!r) {
-    // throw new Error("Failed!");
-    return []
-  }
+//   if (!r) {
+//     // throw new Error("Failed!");
+//     return []
+//   }
 
-  return r;
-};
+//   return r;
+// };
 
 // const getData = async () => {
 //   const categories = await prisma.category.findMany();
@@ -26,6 +26,11 @@ const getData = async () => {
 //   console.log(categories);
 //   return categories
 // };
+
+const getData = async () => {
+  const categories = await prisma.category.findMany().catch(err => err);
+  return categories || []
+}
 
 const MenuPage = async () => {
   const menu: MenuType = await getData();

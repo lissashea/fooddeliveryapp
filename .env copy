@@ -1,4 +1,4 @@
-# Created by Vercel CLI
+<!-- # Created by Vercel CLI
 NX_DAEMON=""
 POSTGRES_DATABASE="verceldb"
 POSTGRES_HOST="ep-twilight-dream-53147747-pooler.us-east-1.postgres.vercel-stora ge.com"
@@ -37,4 +37,4 @@ GOOGLE_ID = 834749025457-f9e03b12juqsoe77hjott66ee7hi799n.apps.googleusercontent
 GOOGLE_SECRET = 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
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = pk_test_51NufZyHohyeF21kBhprhg5dlsYPxgdTxorEImJn2NBFxOpqTQm1QrYCC09fih4VbeOAE7uirdcjfmODA9mIRebYl00GT9WYUco
 STRIPE_SECRET_KEY = sk_test_51NufZyHohyeF21kBVuDn7jyVXRk3yrwrnEIRjRvBefxTSR0BmUWU4iKrSGk6P9dUXXerB9fBneeOdSlynaV03y6H00po5sKbie
-
+ -->

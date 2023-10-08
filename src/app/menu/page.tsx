@@ -38,6 +38,12 @@ const MenuPage = async () => {
   // console.log(menu);
   
   // const menu: MenuType = []
+
+  if (!Array.isArray(menu)) {
+    // Handle the case where menu is not an array (e.g., show an error message)
+    return <div>Error: Menu data is not available.</div>;
+  }
+  
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row items-center">
       {menu.map((category) => (
